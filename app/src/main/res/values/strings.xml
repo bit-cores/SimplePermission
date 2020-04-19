@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SimplePermission</string>
+    <string name="perm_request">权限请求</string>
+    <string name="cancel">取消</string>
+    <string name="authorize">去允许</string>
+    <string name="setting">去设置</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
