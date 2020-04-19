@@ -1,5 +1,5 @@
 # SimplePermission
-一行注解完成所有权限操作。
+一行注解搞定Android6.0运行时权限。
 
 ## 一、项目介绍
 这是一款基于AOP思想的运行时权限库。帮助开发者免去繁琐的权限请求流程，一行注解就可以完成权限请求，大大降低了权限请求对业务代码对入侵。
@@ -25,6 +25,13 @@ buildscript {
         ...
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.10'
     }
+    
+    allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 }
 ```
 
@@ -33,9 +40,11 @@ buildscript {
 apply plugin: 'android-aspectjx'
 
 dependencies {
-    //implementation 'com.github.Liberuman:PermissionManager:0.31'
+    implementation 'com.github.bit-cores:SimplePermission:0.1.0'
 }
 ```
+
+注意：如果是多Module多工程，需要在每个用到运行时权限的Module中都添加`apply plugin: 'android-aspectjx'`
 
 ## 五、使用
 
@@ -90,3 +99,16 @@ dependencies {
  
    `@PermissionDeniedAndNoLongerAsk`（非必选）
     <br>用户拒绝了权限，且勾选了【不再询问】）。默认的话，框架内部会弹框提示向用户解释权限，并且引导用户打开`设置-应用`去手动授权。如果加了这个注解的话，就由开发者自定义这个逻辑。
+    
+## Question  
+Q1:Default interface methods are only supported starting with Android N (--min-api 24): void org.aspectj.lang.ProceedingJoinPoint.stack$AroundClosure(org.aspectj.runtime.internal.AroundClosure)
+```
+android {
+    ......
+    //指定jdk版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+```
