@@ -13,6 +13,9 @@
 - 支持kotlin、androidx
 - 非侵入式
 
+## 三、权限申请流程
+![image](https://github.com/bit-cores/SimplePermission/blob/master/11.png)
+
 ## 三、添加依赖和配置
 1.在project的`build.gradle`中添加
 ```
