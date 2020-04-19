@@ -2,11 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-//apply plugin: 'android-aspectjx'
-apply plugin: 'com.hujiang.android-aspectjx'
-
+apply plugin: 'android-aspectjx'
+//apply plugin: 'com.hujiang.android-aspectjx'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 

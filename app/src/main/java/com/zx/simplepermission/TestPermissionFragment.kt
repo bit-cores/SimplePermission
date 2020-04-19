@@ -63,8 +63,8 @@ class TestPermissionFragment : Fragment() {
 
     @PermissionDeniedAndNoLongerAsk(requestCode = REQUEST_CODE_CAMERA)
     private fun noLongerAsk() {
-        Log.e(TAG, "noLongerAsk:--- @PermissionDeniedAndNoLongerPrompt ")
-        Toast.makeText(context, "开发者自己处理【@PermissionDeniedAndNoLongerPrompt】逻辑", Toast.LENGTH_SHORT)
+        Log.e(TAG, "noLongerAsk:--- @PermissionDeniedAndNoLongerAsk ")
+        Toast.makeText(context, "开发者自己处理【@PermissionDeniedAndNoLongerAsk】逻辑", Toast.LENGTH_SHORT)
             .show()
     }
 }
