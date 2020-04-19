@@ -16,7 +16,7 @@
 ## 三、权限申请流程
 ![image](https://github.com/bit-cores/SimplePermission/blob/master/11.png)
 
-## 三、添加依赖和配置
+## 四、添加依赖和配置
 1.在project的`build.gradle`中添加
 ```
 buildscript {
@@ -27,7 +27,8 @@ buildscript {
     }
 }
 ```
-1.在app/libary的`build.gradle`中添加
+
+2.在app/libary的`build.gradle`中添加
 ```
 apply plugin: 'android-aspectjx'
 
@@ -36,7 +37,7 @@ dependencies {
 }
 ```
 
-## 四、使用
+## 五、使用
 
  **Basic**
 ```
@@ -55,6 +56,11 @@ dependencies {
 这种方式及其简单，只需要申明权限／权限组、requestCode、请求拒绝的描述就可以了。如果用户同意权限，就直接执行方法；
 如果用户拒绝，会用框架默认的Dialog去提示权限作用或者引导用户手动授权。
 
+参数：
+`value：`权限数组，如果是多个权限用,隔开。
+`requestCode：`请求码。这是一次权限申请的标识，如果一个页面内有多处申请权限的地方，请确保请求码不同。
+`describe：`用户拒绝权限时，向用户解释说明的描述。
+
 
 **自定义权限拒绝的逻辑**
 ```
@@ -71,3 +77,12 @@ dependencies {
             .show()
     }
 ```
+
+## 六、相关注解说明
+   `@CheckPermission`（必选）
+   检查权限（必选）。如果是Android6.0以下设备，直接执行方法；如果是6.0及以上设备，先判断是否已经获得了权限，如果获得了权限，直接执行方法，如果没有权限，就向系统申请权限。
+   `@PermissionDenied`（非必选）
+   用户拒绝了权限，且没有勾选【不再询问】）。默认的话，框架内部会弹框向用户解释权限，如果加了这个注解的话，就由开发者自定义拒绝权限的逻辑。
+   `@PermissionDeniedAndNoLongerAsk`（必选）
+   用户拒绝了权限，且勾选了【不再询问】）。默认的话，框架内部会弹框提示向用户解释权限，并且引导用户打开`设置-应用`去手动授权。如果加了这个注解的话，就由开发者自定义这个逻辑。
+   
